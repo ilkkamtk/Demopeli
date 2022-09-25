@@ -1,0 +1,5 @@
+requests~=2.27.1
+mysql-connector-python~=8.0.28
+Flask~=2.0.3
+python-dotenv~=0.19.2
+geopy~=2.2.0
