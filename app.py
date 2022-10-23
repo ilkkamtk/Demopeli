@@ -1,13 +1,13 @@
+import json
 import os
 
-from flask import Flask, request
-from flask_cors import CORS, cross_origin
 import mysql.connector
+from dotenv import load_dotenv
+from flask import Flask, request
+from flask_cors import CORS
+
 import config
 from game import Game
-from airport import Airport
-import json
-from dotenv import load_dotenv
 
 load_dotenv()
 
