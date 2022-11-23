@@ -347,4 +347,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+.idea/*
+.idea
+
 # End of https://www.toptal.com/developers/gitignore/api/pycharm,python,macos,windows,linux
