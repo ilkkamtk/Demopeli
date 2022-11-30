@@ -89,15 +89,15 @@ class Game:
 
     def fetch_goal_info(self):
 
-        sql = "SELECT * FROM (SELECT Goal.id, Goal.name, Goal.description, Goal.icon, GoalReached.gameid, "
+        sql = "SELECT * FROM (SELECT Goal.id, Goal.name, Goal.description, Goal.icon, goal_reached.game_id, "
         sql += "Goal.target, Goal.target_minvalue, Goal.target_maxvalue, Goal.target_text "
-        sql += "FROM Goal INNER JOIN GoalReached ON Goal.id = GoalReached.goalid "
-        sql += "WHERE GoalReached.gameid = '" + self.status["id"] + "' "
+        sql += "FROM Goal INNER JOIN goal_reached ON Goal.id = goal_reached.goal_id "
+        sql += "WHERE goal_reached.game_id = '" + self.status["id"] + "' "
         sql += "UNION SELECT Goal.id, Goal.name, Goal.description, Goal.icon, NULL, "
         sql += "Goal.target, Goal.target_minvalue, Goal.target_maxvalue, Goal.target_text "
         sql += "FROM Goal WHERE Goal.id NOT IN ("
-        sql += "SELECT Goal.id FROM Goal INNER JOIN GoalReached ON Goal.id = GoalReached.goalid "
-        sql += "WHERE GoalReached.gameid = '" + self.status["id"] + "')) AS t ORDER BY t.id;"
+        sql += "SELECT Goal.id FROM Goal INNER JOIN goal_reached ON Goal.id = goal_reached.goal_id "
+        sql += "WHERE goal_reached.game_id = '" + self.status["id"] + "')) AS t ORDER BY t.id;"
 
         print(sql)
         cur = config.conn.cursor()

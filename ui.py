@@ -22,7 +22,7 @@ def output_status(json):
     print("Weather goals:")
     goals = json["goals"]
     for a in goals:
-        print (str(a["goalid"]) + " " + a["name"] + " " + a["description"] + " " + str(a["reached"]))
+        print (str(a["goal_id"]) + " " + a["name"] + " " + a["description"] + " " + str(a["reached"]))
 
 
     print("------------------------------------------------")

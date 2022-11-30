@@ -1,5 +1,9 @@
 import requests
 import config
+import os
+
+from dotenv import load_dotenv
+load_dotenv()
 
 class Weather:
 
@@ -25,7 +29,7 @@ class Weather:
         for goal in game.goals:
             if goal.reached==False and goal.goalid in self.meets_goals:
                 # new goal
-                sql = "INSERT INTO GoalReached VALUES ('" + game.status["id"] + "', '" + str(goal.goalid)  + "')"
+                sql = "INSERT INTO goal_reached VALUES ('" + game.status["id"] + "', '" + str(goal.goalid)  + "')"
                 print(sql)
                 cur = config.conn.cursor()
                 cur.execute(sql)
@@ -34,7 +38,7 @@ class Weather:
 
 
     def __init__(self, sijainti, game):
-        apikey = "bda75ef0309aec2639f2d2b9f73d35ab"
+        apikey = os.environ.get('API_KEY')
 
         request = "https://api.openweathermap.org/data/2.5/weather?lat=" + \
                  str(sijainti.latitude) + "&lon=" + str(sijainti.longitude) + "&appid=" + apikey
